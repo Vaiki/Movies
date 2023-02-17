@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Movie</string>
+    <string name="popular_now">Популярное сейчас</string>
+    <string name="action_movie">боевики</string>
+    <string name="chip_drama">драмы</string>
+    <string name="chip_comedy">комедии</string>
+    <string name="arthouse_movie">артхаус</string>
+    <string name="melodrama_movie">мелодрамы</string>
+    <string name="poster">poster</string>
 </resources>
