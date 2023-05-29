@@ -1,9 +1,7 @@
 package com.example.movie.domain
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.movie.domain.models.Film
-import com.example.movie.domain.models.FilmItem
 import com.example.movie.domain.models.api_models.details.Genre
 
 interface Repository {
@@ -16,5 +14,6 @@ interface Repository {
     fun getGenreList(): LiveData<List<Genre>>
 
     fun editGenreList(genre: Genre)
+
 
 }

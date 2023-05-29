@@ -3,12 +3,12 @@ package com.example.movie.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.movie.domain.models.Film
 import com.example.movie.data.RepositoryImpl
 import com.example.movie.domain.GetFilmItemUseCase
 import com.example.movie.domain.GetFilmListUseCase
 import com.example.movie.domain.GetFilteredListUseCase
 import com.example.movie.domain.GetGenreListUseCase
+import com.example.movie.domain.models.Film
 import com.example.movie.domain.models.api_models.details.Genre
 
 class MainViewModel() : ViewModel() {
@@ -32,13 +32,13 @@ class MainViewModel() : ViewModel() {
 
     val listGenre = getGenreListUseCase.getGenreList()
 
-    fun editGenreList(genre:Genre){
+    val listActorsLD = repository.getActorList()
+
+
+    fun editGenreList(genre: Genre) {
         getFilteredListUseCase.editGenreList(genre)
         getFilmListUseCase.getFilteredFilmList()
     }
-
-
-
 
 
 }

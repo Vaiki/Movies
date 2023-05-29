@@ -1,18 +1,19 @@
 package com.example.movie.presentation
 
 import android.os.Bundle
-import android.telecom.Call.Details
-import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.movie.R
 import com.example.movie.databinding.FragmentDetailsBinding
+import com.example.movie.presentation.adapters.ListActorsAdapter
 
 
 class DetailsFragment : Fragment(R.layout.fragment_details) {
 
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
+    private lateinit var actorListAdapter: ListActorsAdapter
 
     private var filmItemId = 0
     private val viewModel by viewModels<MainViewModel>()
@@ -21,7 +22,10 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentDetailsBinding.bind(view)
         parseParams()
+        setupActorsRecycler()
         setUI()
+
+
     }
 
     private fun setUI() {
@@ -34,6 +38,15 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 ratingBar.rating = it.rating.toFloat()
             }
         }
+        viewModel.listActorsLD.observe(viewLifecycleOwner) {
+            actorListAdapter.submitList(it)
+        }
+    }
+
+
+    private fun setupActorsRecycler() {
+        actorListAdapter = ListActorsAdapter()
+        binding.rvActors.adapter = actorListAdapter
     }
 
     private fun parseParams() {
